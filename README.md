@@ -76,3 +76,5 @@ Se muestran diferentes estadísticas sobre los participantes, como:
 Los participantes se pueden exportar a formato JSON. También se puede pegar un JSON para importar los participantes. Si el JSON no es válido, se muestra un mensaje de error.
 
 ### Chat ia
+
+https://chatgpt.com/share/6ad50432-ed50-83ed-8073-5cf0457864c3
