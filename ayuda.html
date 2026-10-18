@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ayuda</title>
+
+</head>
+
+
+<body>
+
+    <h1>Ayuda</h1>
+
+    <p>
+        Esta página muestra información sobre el
+        navegador y el entorno utilizado para ejecutar
+        la aplicación.
+    </p>
+
+
+    <section>
+
+        <h2>Información del navegador</h2>
+
+        <p id="navegador"></p>
+
+        <p id="idioma"></p>
+
+        <p id="pantalla"></p>
+
+        <p id="url"></p>
+
+    </section>
+
+
+    <button
+        type="button"
+        id="cerrarAyuda"
+    >
+        Cerrar
+    </button>
+
+
+    <script>
+
+        const navegador =
+            document.getElementById(
+                "navegador"
+            );
+
+
+        const idioma =
+            document.getElementById(
+                "idioma"
+            );
+
+
+        const pantalla =
+            document.getElementById(
+                "pantalla"
+            );
+
+
+        const url =
+            document.getElementById(
+                "url"
+            );
+
+
+        navegador.textContent =
+            `Navegador: ${navigator.userAgent}`;
+
+
+        idioma.textContent =
+            `Idioma: ${navigator.language}`;
+
+
+        pantalla.textContent =
+            `Resolución: ${screen.width} x ${screen.height}`;
+
+
+        url.textContent =
+            `URL actual: ${window.location.href}`;
+
+
+        document
+            .getElementById("cerrarAyuda")
+            .addEventListener(
+                "click",
+                function () {
+
+                    window.close();
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

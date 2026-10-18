@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Panel de participantes</title>
+</head>
+
+<body>
+
+    <h1>Panel de participantes</h1>
+
+    <p id="mensaje">
+        Esperando datos...
+    </p>
+
+    <div id="panel"></div>
+
+
+    <script>
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+        const panel =
+            document.getElementById("panel");
+
+
+        window.addEventListener(
+            "message",
+            function (evento) {
+
+                /*
+                 * Comprobamos el origen.
+                 */
+
+                if (
+                    evento.origin !== window.location.origin
+                ) {
+                    return;
+                }
+
+
+                /*
+                 * Comprobamos que el mensaje
+                 * procede de la ventana padre.
+                 */
+
+                if (
+                    evento.source !== window.parent
+                ) {
+                    return;
+                }
+
+
+                /*
+                 * Comprobamos que event.data
+                 * tiene la estructura esperada.
+                 */
+
+                if (
+                    !evento.data ||
+                    typeof evento.data !== "object"
+                ) {
+                    return;
+                }
+
+
+                if (
+                    evento.data.tipo !==
+                    "actualizarParticipantes"
+                ) {
+                    return;
+                }
+
+
+                if (
+                    !Array.isArray(
+                        evento.data.participantes
+                    )
+                ) {
+                    return;
+                }
+
+
+                const participantes =
+                    evento.data.participantes;
+
+
+                panel.replaceChildren();
+
+
+                mensaje.textContent =
+                    `Participantes recibidos: ${participantes.length}`;
+
+
+                for (
+                    const participante of participantes
+                ) {
+
+                    const elemento =
+                        document.createElement("p");
+
+
+                    elemento.textContent =
+                        `${participante.nombre} - ` +
+                        `${participante.edad} años - ` +
+                        `${participante.modalidad}`;
+
+
+                    panel.append(
+                        elemento
+                    );
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

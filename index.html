@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gestor de participantes</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <script
+        src="js/funciones.js"
+        defer
+    ></script>
+
+    <script
+        src="js/app.js"
+        defer
+    ></script>
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <h1>Gestor de participantes</h1>
+
+        <p>
+            Evento tecnológico
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <section>
+
+            <h2>Alta de participante</h2>
+
+            <form id="formularioParticipante">
+
+                <div>
+
+                    <label for="nombre">
+                        Nombre:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                    >
+
+                    <p id="errorNombre"></p>
+
+                </div>
+
+
+                <div>
+
+                    <label for="edad">
+                        Edad:
+                    </label>
+
+                    <input
+                        type="number"
+                        id="edad"
+                        name="edad"
+                    >
+
+                    <p id="errorEdad"></p>
+
+                </div>
+
+
+                <div>
+
+                    <label for="tipo">
+                        Tipo:
+                    </label>
+
+                    <select
+                        id="tipo"
+                        name="tipo"
+                    >
+
+                        <option value="">
+                            Selecciona un tipo
+                        </option>
+
+                        <option value="estudiante">
+                            Estudiante
+                        </option>
+
+                        <option value="profesional">
+                            Profesional
+                        </option>
+
+                        <option value="invitado">
+                            Invitado
+                        </option>
+
+                    </select>
+
+                    <p id="errorTipo"></p>
+
+                </div>
+
+
+                <div>
+
+                    <label for="modalidad">
+                        Modalidad:
+                    </label>
+
+                    <select
+                        id="modalidad"
+                        name="modalidad"
+                    >
+
+                        <option value="">
+                            Selecciona una modalidad
+                        </option>
+
+                        <option value="presencial">
+                            Presencial
+                        </option>
+
+                        <option value="online">
+                            Online
+                        </option>
+
+                    </select>
+
+                    <p id="errorModalidad"></p>
+
+                </div>
+
+
+                <div>
+
+                    <label for="experiencia">
+                        Experiencia:
+                    </label>
+
+                    <input
+                        type="number"
+                        id="experiencia"
+                        name="experiencia"
+                        step="0.1"
+                    >
+
+                    <p id="errorExperiencia"></p>
+
+                </div>
+
+
+                <button type="submit">
+                    Añadir participante
+                </button>
+
+            </form>
+
+            <p id="mensajeFormulario"></p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Participantes</h2>
+
+            <div>
+
+                <label for="busqueda">
+                    Buscar por nombre:
+                </label>
+
+                <input
+                    type="text"
+                    id="busqueda"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="filtroModalidad">
+                    Filtrar por modalidad:
+                </label>
+
+                <select id="filtroModalidad">
+
+                    <option value="todas">
+                        Todas
+                    </option>
+
+                    <option value="presencial">
+                        Presencial
+                    </option>
+
+                    <option value="online">
+                        Online
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="listaParticipantes"></div>
+
+            <p id="mensajeLista"></p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Estadísticas</h2>
+
+            <div id="estadisticas"></div>
+
+        </section>
+
+
+        <section>
+
+            <h2>
+                Importar y exportar datos
+            </h2>
+
+            <textarea
+                id="areaJson"
+                rows="12"
+                cols="70"
+                placeholder="Aquí aparecerán los datos en formato JSON"
+            ></textarea>
+
+            <div>
+
+                <button
+                    type="button"
+                    id="exportarJson"
+                >
+                    Exportar JSON
+                </button>
+
+                <button
+                    type="button"
+                    id="importarJson"
+                >
+                    Importar JSON
+                </button>
+
+            </div>
+
+            <p id="mensajeJson"></p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Panel externo</h2>
+
+            <iframe
+                id="iframePanel"
+                src="panel.html"
+                title="Panel de participantes"
+                width="100%"
+                height="300"
+            ></iframe>
+
+        </section>
+
+
+        <section>
+
+            <h2>Ayuda</h2>
+
+            <button
+                type="button"
+                id="abrirAyuda"
+            >
+                Abrir ayuda
+            </button>
+
+        </section>
+
+
+        <section>
+
+            <h2>Preferencias</h2>
+
+            <div>
+
+                <label for="tema">
+                    Tema:
+                </label>
+
+                <select id="tema">
+
+                    <option value="claro">
+                        Claro
+                    </option>
+
+                    <option value="oscuro">
+                        Oscuro
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label for="tamanoTexto">
+                    Tamaño del texto:
+                </label>
+
+                <select id="tamanoTexto">
+
+                    <option value="normal">
+                        Normal
+                    </option>
+
+                    <option value="grande">
+                        Grande
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
